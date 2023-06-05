@@ -1,5 +1,6 @@
 $util.qr($ctx.args.input.put("id", $util.autoId()))
 $util.qr($ctx.args.input.put("owner", $ctx.identity.username))
+$util.qr($ctx.args.input.put("users",[$ctx.identity.sub]))
 $util.qr($ctx.args.input.put("createdAt", $util.time.nowISO8601()))
 $util.qr($ctx.args.input.put("updatedAt", $util.time.nowISO8601()))
 

@@ -1,5 +1,5 @@
 type Query {
-  listRooms(limit: Int): RoomConnection
+  listRooms(limit: Int, userId: String!): RoomConnection
   listMessagesForRoom(
     roomId: ID!
     sortDirection: ModelSortDirection
@@ -20,6 +20,17 @@ type Subscription {
     @aws_subscribe(mutations: ["updateMessage"])
 }
 
+type UserConnection {
+  items: [User!]
+  nextToken: String
+}
+
+type User {
+  id: ID!
+  username: String
+  email: AWSEmail
+}
+
 type RoomConnection {
   items: [Room!]
   nextToken: String
@@ -33,6 +44,7 @@ type Room {
     limit: Int
     nextToken: String
   ): MessageConnection
+  users(limit: Int, nextToken: String): UserConnection
   createdAt: AWSDateTime
   updatedAt: AWSDateTime
 }

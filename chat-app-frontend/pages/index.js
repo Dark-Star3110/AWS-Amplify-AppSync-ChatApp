@@ -24,6 +24,9 @@ function Home({ signOut, user }) {
   useEffect(() => {
     API.graphql({
       query: listRooms,
+      variables: {
+        userId: user.attributes.sub,
+      },
     }).then(({ data }) => {
       setRooms(data.listRooms.items);
     });

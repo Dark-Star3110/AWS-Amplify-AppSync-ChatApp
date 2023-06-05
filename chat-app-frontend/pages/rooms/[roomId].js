@@ -116,6 +116,9 @@ export async function getServerSideProps(context) {
     const user = await Auth.currentAuthenticatedUser();
     const { data } = await API.graphql({
       query: listRooms,
+      variables: {
+        userId: user.attributes.sub,
+      },
     });
 
     const currentRoomData = data.listRooms.items.find(

@@ -46,6 +46,14 @@ export const createRoom = /* GraphQL */ `
         }
         nextToken
       }
+      users {
+        items {
+          id
+          username
+          email
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }

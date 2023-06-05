@@ -2,12 +2,15 @@
 // this is an auto generated file. This will be overwritten
 
 export const listRooms = /* GraphQL */ `
-  query ListRooms($limit: Int) {
-    listRooms(limit: $limit) {
+  query ListRooms($limit: Int, $userId: String!) {
+    listRooms(limit: $limit, userId: $userId) {
       items {
         id
         name
         messages {
+          nextToken
+        }
+        users {
           nextToken
         }
         createdAt
